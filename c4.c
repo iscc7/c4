@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <memory.h>
-#include <unistd.h>
+// #include <unistd.h>
 
 char *p, *lp, // current position in source code
      *data;   // data/bss pointer
@@ -150,7 +150,7 @@ void next()
     }
     else if (tk == '\'' || tk == '"') {//引号开头,认为是字符(串)
       pp = data;
-      while (*p != 0 && *p != tk) {//直到找到匹配的引号为止;p == 0 是什么情况没看懂;
+      while (*p != 0 && *p != tk) {//直到找到匹配的引号或文件末尾为止
         if ((ival = *p++) == '\\') {
           if ((ival = *p++) == 'n') ival = '\n';// '\n' 认为是'\n' 其他直接忽略'\'转义
         }
